@@ -1,0 +1,30 @@
+.ModelBackdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 200;
+}
+
+.Model {
+    position: fixed;
+    z-index: 500;
+    background-color: rgb(95, 93, 93);
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 30%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+}
+
+@media (min-width: 600px) {
+    .Model {
+        width: 500px;
+        left: calc(50% - 250px);
+    }
+}
