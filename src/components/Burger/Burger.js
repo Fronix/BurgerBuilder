@@ -15,7 +15,7 @@ const burger = (props) => {
     }, []);
 
   if (transIngredients.length === 0) {
-    transIngredients = <p>Please start adding ingredients</p>;
+    transIngredients = <p>Var god och börja lägga till Ingredienser</p>;
   }
 
   return (

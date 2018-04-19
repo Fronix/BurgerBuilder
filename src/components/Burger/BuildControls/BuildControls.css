@@ -9,6 +9,13 @@
     padding: 10px 0;
 }
 
+.ButtonControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+}
+
 .OrderButton {
     background-color: #DAD735;
     outline: none;
@@ -19,12 +26,14 @@
     font-size: 1.2em;
     padding: 15px 30px;
     box-shadow: 2px 2px 2px #966909;
+    margin: 10px;
 }
 
 .OrderButton:hover, .OrderButton:active {
     background-color: #A0DB41;
     border: 1px solid #966909;
     color: #966909;
+    display: inline-block;
 }
 
 .OrderButton:disabled {
@@ -35,6 +44,35 @@
 }
 
 .OrderButton:not(:disabled) {
+    animation: enable 0.3s linear;
+}
+
+.ResetButton {
+    background-color: #DAD735;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #966909;
+    color: #966909;
+    font-family: inherit;
+    font-size: 1.1em;
+    padding: 12px 25px;
+    box-shadow: 2px 2px 2px #966909;
+}
+
+.ResetButton:hover, .ResetButton:active {
+    background-color: #A0DB41;
+    border: 1px solid #966909;
+    color: #966909;
+}
+
+.ResetButton:disabled {
+    background-color: #C7C6C6;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+    color: #888888;
+}
+
+.ResetButton:not(:disabled) {
     animation: enable 0.3s linear;
 }
 
