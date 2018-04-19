@@ -19,6 +19,7 @@ const orderSummary = (props) => {
       <ul>
         {ingredientSummary}
       </ul>
+      <p><strong>Pris totalt: {props.price}</strong></p>
       <p>Fortsätt till utcheckning?</p>
       <Button
         btnType='Danger'
