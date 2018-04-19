@@ -21,7 +21,7 @@
         "dot-notation": "warn",
         "eqeqeq": "error",
         "guard-for-in": "warn",
-        "no-alert": "error",
+        "no-alert": "warn",
         "no-div-regex": "warn",
         "no-else-return": "warn",
         "no-eq-null": "warn",

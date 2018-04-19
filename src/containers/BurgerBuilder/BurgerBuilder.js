@@ -4,6 +4,7 @@ import Aux from '../../hoc/auxilary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Model from '../../components/UI/Model/Model';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICES = {
   salad: 5,
@@ -21,7 +22,8 @@ class BurgerBuilder extends Component {
         meat: 0
       },
       totalPrice: 20,
-      purchaseable: false
+      purchaseable: false,
+      purchasing: false
     }
 
     updatePurchaseState(ingredients) {
@@ -67,6 +69,19 @@ class BurgerBuilder extends Component {
       this.updatePurchaseState(updatedIngredients);
     }
 
+    purchaseHandler = () => {
+      this.setState({purchasing: true});
+    }
+
+    purchaseCancelHandler = () => {
+      this.setState({purchasing: false});
+    }
+
+    purchaseContinueHandler = () => {
+      // eslint-disable-next-line
+      alert('Din burgare är beställd!');
+    }
+
     render() {
       const disabledInfo = {
         ...this.state.ingredients
@@ -78,13 +93,21 @@ class BurgerBuilder extends Component {
       }
       return (
         <Aux>
-          <Model />
+
+
+          <Model show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+            <OrderSummary
+              purchaseCancelled={this.purchaseCancelHandler}
+              purchaseContinued={this.purchaseContinueHandler}
+              ingredients={this.state.ingredients}/>
+          </Model>
           <Burger ingredients={this.state.ingredients}/>
           <BuildControls
             ingredientAdded={this.addIngredientHandler}
             ingredientRemoved={this.removeIngredientHandler}
             disabled={disabledInfo}
             purchaseable={this.state.purchaseable}
+            ordered={this.purchaseHandler}
             price={this.state.totalPrice} />
         </Aux>
       );
