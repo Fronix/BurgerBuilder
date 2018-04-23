@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import Aux from '../../../hoc/auxilary';
 import Button from '../../UI/Button/Button';
 
+const INGREDIENT_NAMES = {
+  salad: 'sallad',
+  cheese: 'ost',
+  meat: 'kött',
+  bacon: 'bacon'
+};
+
 class OrderSummary extends Component {
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients)
@@ -10,7 +17,7 @@ class OrderSummary extends Component {
         return (
           <li key={igKey}>
             <span style={{ textTransform: 'capitalize' }}>
-              {igKey}</span>: {this.props.ingredients[igKey]}
+              {INGREDIENT_NAMES[igKey]}</span>: {this.props.ingredients[igKey]}
           </li>);
       });
 
