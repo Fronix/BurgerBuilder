@@ -8,6 +8,7 @@ import Model from '../../components/UI/Model/Model';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import CheckoutSummary from '../Checkout/Checkout';
 
 const INGREDIENT_PRICES = {
   salad: 5,
@@ -23,7 +24,8 @@ class BurgerBuilder extends Component {
       purchaseable: false,
       purchasing: false,
       loading: false,
-      error: false
+      error: false,
+      checkout: false
     }
 
     componentDidMount() {
@@ -101,40 +103,32 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-      this.setState({loading: true});
-      const order = {
-        ingredients: this.state.ingredients,
-        price: this.state.totalPrice,
-        customer: {
-          name: 'Oscar Martin',
-          address: {
-            street: 'Lulgatan 12',
-            zipCode: '1337',
-            countery: 'Sweden'
-          },
-          email: 'fronix@fronix.se'
-        },
-        deliveryMethod: 'fastest'
-      };
-      axios.post('/orders.json', order)
-        .then(response => {
-          this.setState({loading: false, purchasing: false});
-        })
-        .catch(error => {
-          this.setState({loading: false, purchasing: false});
-        });
+      // this.setState({loading: true});
+
+      // const order = {
+      //   ingredients: this.state.ingredients,
+      //   price: this.state.totalPrice,
+      //   customer: {
+      //     name: 'Oscar Martin',
+      //     address: {
+      //       street: 'Lulgatan 12',
+      //       zipCode: '1337',
+      //       countery: 'Sweden'
+      //     },
+      //     email: 'fronix@fronix.se'
+      //   },
+      //   deliveryMethod: 'fastest'
+      // };
+
+      // axios.post('/orders.json', order)
+      //   .then(response => {
+      //     this.setState({loading: false, purchasing: false});
+      //   })
+      //   .catch(error => {
+      //     this.setState({loading: false, purchasing: false});
+      //   });
+      this.props.history.push('/checkout');
     }
-
-    // updatePrice(ingredients) {
-    //   const newPrice = Object.keys(ingredients)
-    //     .map(igKey =>{
-    //       return ingredients[igKey] * INGREDIENT_PRICES[igKey];
-    //     }).reduce((newPrice, el) =>{
-    //       return newPrice + el;
-    //     }, 0);
-
-    //   this.setState({totalPrice: newPrice + 4});
-    // }
 
     render() {
       const disabledInfo = {
