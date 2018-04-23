@@ -8,7 +8,6 @@ import Model from '../../components/UI/Model/Model';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import CheckoutSummary from '../Checkout/Checkout';
 
 const INGREDIENT_PRICES = {
   salad: 5,
@@ -106,31 +105,20 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-      // this.setState({loading: true});
+      const queryParams = [];
+      for (let i in this.state.ingredients) {
+        if (this.state.ingredients.hasOwnProperty(i)) {
+          queryParams.push(
+            encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
+        }
+      }
+      queryParams.push('price=' + this.state.totalPrice);
+      const queryString = queryParams.join('&');
 
-      // const order = {
-      //   ingredients: this.state.ingredients,
-      //   price: this.state.totalPrice,
-      //   customer: {
-      //     name: 'Oscar Martin',
-      //     address: {
-      //       street: 'Lulgatan 12',
-      //       zipCode: '1337',
-      //       countery: 'Sweden'
-      //     },
-      //     email: 'fronix@fronix.se'
-      //   },
-      //   deliveryMethod: 'fastest'
-      // };
-
-      // axios.post('/orders.json', order)
-      //   .then(response => {
-      //     this.setState({loading: false, purchasing: false});
-      //   })
-      //   .catch(error => {
-      //     this.setState({loading: false, purchasing: false});
-      //   });
-      this.props.history.push('/checkout');
+      this.props.history.push({
+        pathname: '/checkout',
+        search: '?' + queryString
+      });
     }
 
     render() {
