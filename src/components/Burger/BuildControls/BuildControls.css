@@ -30,7 +30,7 @@
 }
 
 .OrderButton:hover, .OrderButton:active {
-    background-color: #A0DB41;
+    background-color: rgb(157, 236, 29);
     border: 1px solid #966909;
     color: #966909;
     display: inline-block;
@@ -60,9 +60,9 @@
 }
 
 .ResetButton:hover, .ResetButton:active {
-    background-color: #A0DB41;
+    background-color: rgb(168, 28, 28);
     border: 1px solid #966909;
-    color: #966909;
+    color: #2c2820;
 }
 
 .ResetButton:disabled {
