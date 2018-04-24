@@ -15,7 +15,7 @@ const checkoutSummary = (props) => {
         onClick={props.checkoutCancelled}>Avbryt</button>
       <button
         className={classes.OrderButton}
-        onClick={props.checkoutContinued}>Beställ NU!</button>
+        onClick={props.checkoutContinued}>Fortsätt</button>
     </div>
   );
 };
