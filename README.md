@@ -2,7 +2,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 A burger builder written in React
 
-How to use
-
-1. Run "npm install" in the BurgerBuilder folder
-2. Run "npm start" to view the website
+Stage 3 of this project includes everything from stage 1,2 aswell as Redux that handles all the ingredients and prices.
+It does not work asynchronous yet, stage 4 includes that.
