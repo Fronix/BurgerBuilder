@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../../../axios-orders';
+import { connect } from 'react-redux';
 
 import Button from '../../../components/UI/Button/Button';
 import classes from './ContactData.css';
@@ -80,6 +81,12 @@ class ContactData extends Component {
       loading: false
     }
 
+    componentWillMount = () => {
+      if (this.props.price < 21) {
+        this.props.history.push('/');
+      }
+    };
+
     orderHandler = (event) => {
       event.preventDefault();
 
@@ -92,7 +99,7 @@ class ContactData extends Component {
         }
       }
       const order = {
-        ingredients: this.props.ingredients,
+        ingredients: this.props.ings,
         price: this.props.price,
         orderData: formData
 
@@ -100,7 +107,7 @@ class ContactData extends Component {
       axios.post('/orders.json', order)
         .then(response => {
           this.setState({loading: false});
-          this.props.history.push('/');
+          window.location.href = '/';
         })
         .catch(error => {
           this.setState({loading: false});
@@ -180,7 +187,7 @@ class ContactData extends Component {
             btnType="Danger"
             clicked={this.orderCancelHandler}>AVBRYT</Button>
           <Button
-            btnType="Success"
+            btnType="Success_2"
             clicked={this.orderHandler}
             disabled={!this.state.formIsValid}>BESTÄLL</Button>
         </form>
@@ -199,4 +206,11 @@ class ContactData extends Component {
     }
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+  return {
+    ings: state.ingredients,
+    price: state.totalPrice
+  };
+};
+
+export default connect(mapStateToProps)(ContactData);
