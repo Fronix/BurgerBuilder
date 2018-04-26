@@ -128,6 +128,10 @@ class ContactData extends Component {
       return isValid;
     }
 
+    orderCancelHandler = () => {
+      this.props.history.goBack();
+    }
+
     inputChangedHandler = (event, inputIdentifier) => {
       const updatedOrderForm = {
         ...this.state.orderForm
@@ -172,6 +176,9 @@ class ContactData extends Component {
               touched={formElement.config.touched}
               changed={(event) => this.inputChangedHandler(event, formElement.id)} />
           ))}
+          <Button
+            btnType="Danger"
+            clicked={this.orderCancelHandler}>AVBRYT</Button>
           <Button
             btnType="Success"
             clicked={this.orderHandler}

@@ -3,11 +3,13 @@ import { Route } from 'react-router-dom';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
+import Model from '../../components/UI/Model/Model';
 
 class Checkout extends Component {
     state = {
       ingredients: null,
-      totalPrice: 0
+      totalPrice: 0,
+      close: false
     }
 
     componentWillMount() {
@@ -22,7 +24,6 @@ class Checkout extends Component {
         }
       }
       this.setState({ingredients: ingredients, totalPrice: price});
-      console.log(ingredients);
     }
 
     checkoutCancelledHandler = () => {
@@ -40,9 +41,11 @@ class Checkout extends Component {
             ingredients={this.state.ingredients}
             checkoutCancelled={this.checkoutCancelledHandler}
             checkoutContinued={this.checkoutContinuedHandler}/>
+
           <Route path={this.props.match.path + '/contact-data'}
           // eslint-disable-next-line
-            render={(props) => (<ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/>)}/>
+            render={(props) => (<Model show={this.props.match.path + '/contact-data'} modalClosed={() => true}><ContactData ingredients={this.state.ingredients} price={this.state.totalPrice} {...props}/></Model>)}/>
+
         </div>
       );
     }

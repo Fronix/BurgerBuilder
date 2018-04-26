@@ -81,19 +81,20 @@ class BurgerBuilder extends Component {
     }
 
     resetBurgerHandler = () => {
-      if (this.state.ingredients !== null) {
-        axios.get('ingredients.json')
-          .then(response => {
-            this.setState({
-              ingredients: response.data,
-              totalPrice: 20,
-              purchaseable: false,
-              purchasing: false});
-          })
-          .catch(error =>{
-            this.setState({error: true});
-          });
-      }
+      // if (this.state.ingredients !== null) {
+      //   axios.get('ingredients.json')
+      //     .then(response => {
+      //       this.setState({
+      //         ingredients: response.data,
+      //         totalPrice: 20,
+      //         purchaseable: false,
+      //         purchasing: false});
+      //     })
+      //     .catch(error =>{
+      //       this.setState({error: true});
+      //     });
+      // }
+      window.location.reload();
     }
 
     purchaseHandler = () => {
