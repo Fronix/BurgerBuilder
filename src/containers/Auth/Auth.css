@@ -1,0 +1,42 @@
+.Auth {
+    margin: 20px auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px rgb(212, 212, 212);
+    display: block;
+}
+
+.Auth form{
+    margin-top: 20px;
+    display: contents;
+}
+
+@media (max-width: 480px) {
+    .Auth {
+        width: 350px;
+        height: 300px;
+    }
+}
+
+@media (min-width: 400px) and (min-height: 401px) {
+    .Auth {
+        width: 450px;
+        height: 400px;
+    }
+}
+
+@media (max-width : 320px) {
+    .Auth {
+        width: 450px;
+        height: 400px;
+    }
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+    .Auth {
+        width: 450px;
+        height: auto;
+    }
+}

@@ -9,7 +9,7 @@ const initialState = {
   savedOrders: []
 };
 
-const orderReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
   case actionTypes.PURCHASE_INIT:
     return updateObject(state, { purchased: false });
@@ -47,4 +47,4 @@ const fetchOrders = (state, action) => {
   });
 };
 
-export default orderReducer;
+export default reducer;

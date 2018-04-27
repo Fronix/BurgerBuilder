@@ -22,14 +22,15 @@ const buildControls = (props) => (
         disabled={props.disabled[ctrl.type]} />
     ))}
     <div className={classes.ButtonControl}>
-      <button
-        className={classes.ResetButton}
-        onClick={props.reset}
-        disabled={!props.purchaseable}>Återställ</button>
+      {props.isAuth ?
+        <button
+          className={classes.ResetButton}
+          onClick={props.reset}
+          disabled={!props.purchaseable}>Återställ</button> : null }
       <button
         className={classes.OrderButton}
         onClick={props.ordered}
-        disabled={!props.purchaseable}>Beställ</button>
+        disabled={!props.purchaseable}>{props.isAuth ? 'Beställ' : 'Registrera dig för att beställa'}</button>
     </div>
   </div>
 );

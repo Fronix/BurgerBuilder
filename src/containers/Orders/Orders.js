@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from '../../axios-orders';
+import { Redirect } from 'react-router-dom';
 
 import Order from '../../components/Order/Order';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -9,7 +10,7 @@ import * as actions from '../../store/actions/index';
 
 class Orders extends Component {
   componentDidMount() {
-    this.props.onOrderInit();
+    this.props.onOrderInit(this.props.token);
   }
 
   render() {
@@ -26,6 +27,7 @@ class Orders extends Component {
         </div>
       );
     }
+
     return form;
   }
 }
@@ -34,13 +36,14 @@ const mapStateToProps = state => {
   return {
     orders: state.or.savedOrders,
     loading: state.or.loading,
-    error: state.or.error
+    error: state.or.error,
+    token: state.auth.token
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderInit: () => dispatch(actions.orderInit())
+    onOrderInit: (token) => dispatch(actions.orderInit(token))
   };
 };
 
