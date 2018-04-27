@@ -32,7 +32,7 @@ class OrderSummary extends Component {
         <p>Fortsätt till utcheckning?</p>
         <Button
           btnType='Danger'
-          clicked={this.props.purchaseCancelled}>Avbryt</Button>
+          clicked={this.props.purchaseCancelled}>Tillbaka</Button>
         <Button
           btnType='Success'
           clicked={this.props.purchaseContinued}>Fortsätt</Button>

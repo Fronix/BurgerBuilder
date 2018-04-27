@@ -4,6 +4,20 @@
     margin: auto;
 }
 
+.CheckoutSummary h1 {
+    color: #702e05;
+    font-size: 2em;
+}
+
+.CheckoutSummary h2 {
+    color: #702e05;
+    font-size: 1.2em;
+}
+
+.CheckoutSummary .CheckoutBurger {
+    width: 100%;
+    margin: auto;
+}
 
 .OrderButton {
     background-color: rgb(53, 190, 99);
@@ -77,17 +91,34 @@
     }
 }
 
-@media (min-width: 500px) and (min-height: 400px) {
+@media (max-width: 480px) {
     .Burger {
         width: 350px;
         height: 300px;
     }
+
+    .CheckoutSummary .CheckoutBurger {
+        height: 260px;
+    }
 }
 
-@media (min-width: 500px) and (min-height: 401px) {
+@media (min-width: 400px) and (min-height: 401px) {
     .Burger {
         width: 450px;
         height: 400px;
+    }
+    .CheckoutSummary .CheckoutBurger {
+        height: 290px;
+    }
+}
+
+@media (max-width : 320px) {
+    .Burger {
+        width: 450px;
+        height: 400px;
+    }
+    .CheckoutSummary .CheckoutBurger {
+        height: auto;
     }
 }
 
@@ -95,5 +126,8 @@
     .Burger {
         width: 700px;
         height: 600px;
+    }
+    .CheckoutSummary .CheckoutBurger {
+        height: 450px;
     }
 }
