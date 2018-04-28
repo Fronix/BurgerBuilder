@@ -178,7 +178,8 @@ const mapStateToProps = state => {
     price: state.bb.totalPrice,
     loading: state.or.loading,
     token: state.auth.token,
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    userEmail: state.auth.email
   };
 };
 

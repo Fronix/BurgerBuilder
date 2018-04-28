@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from '../../axios-orders';
-import { Redirect } from 'react-router-dom';
 
 import Order from '../../components/Order/Order';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -22,7 +21,12 @@ class Orders extends Component {
             <Order
               key={order.id}
               ingredients={order.ingredients}
-              price={order.price}/>
+              price={order.price}
+              email={order.orderData.email}
+              deliveryMethod={order.orderData.deliveryMethod}
+              name={order.orderData.name}
+              street={order.orderData.street}
+              zipCode={order.orderData.zipCode}/>
           ))}
         </div>
       );

@@ -54,12 +54,12 @@ export const auth = (email, password, isSignup) => {
     }
     axios.post(url, authData)
       .then(response => {
-        console.log(response);
         const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('expirationDate', expirationDate);
         localStorage.setItem('userId', response.data.localId);
         dispatch(authSuccess(response.data.idToken, response.data.localId));
+        dispatch(getUserData(response.data.idToken));
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch(err => {
@@ -90,5 +90,24 @@ export const authCheckState = () => {
         dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
       }
     }
+  };
+};
+
+export const userData = (email, displayName) => {
+  return {
+    type: actionTypes.AUTH_GET_USERDATA,
+    email: email
+  };
+};
+
+export const getUserData = (idToken) => {
+  return dispatch => {
+    axios.post('https://www.googleapis.com/identitytoolkit/v3/relyingparty/getAccountInfo?key=AIzaSyD6nh_5HAPig0rLfpUT5x-JGu00wn_FvWQ', {idToken: idToken})
+      .then(response => {
+        dispatch(userData(response.data.users[0].email));
+      })
+      .catch(err => {
+        dispatch(authFail(err.response.data.error));
+      });
   };
 };
