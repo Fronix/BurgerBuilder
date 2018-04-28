@@ -143,8 +143,6 @@ class Auth extends Component {
       if (this.props.isAuthenticated) {
         authRedirect = <Redirect to={this.props.authRedirectPath} />;
       }
-      console.log(this.props.authRedirectPath);
-      console.log(this.props.building);
       return (
         <div className={classes.Auth}>
           {authRedirect}

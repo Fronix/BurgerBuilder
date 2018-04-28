@@ -67,7 +67,6 @@ class BurgerBuilder extends Component {
       let orderSummary = null;
       let burger = this.props.error ? <p style={{textAlign: 'center'}}>
       Ingredienserna kan inte laddas!</p> : <Spinner />;
-      console.log(this.props.building);
       if (this.props.ings) {
         burger = (
           <Aux>
