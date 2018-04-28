@@ -15,6 +15,7 @@ const order = (props) => {
       );
     }
   }
+
   const ingredientOutput = ingredients.map(ig => {
     return <span
       style={{textDecoration: 'capitalize',
@@ -28,7 +29,7 @@ const order = (props) => {
     <div className={classes.Order}>
       <p>Ingredienser: {ingredientOutput}</p>
       <p>Pris: <strong>SEK {props.price}</strong></p>
-      <p>Email: {props.email}</p>
+      <p>Email: <em>{props.email}</em> | Leveranssätt: <em>{props.deliveryMethod === 'fastest' ? 'Snabbast' : 'Billigast'}</em></p>
     </div>);
 };
 
