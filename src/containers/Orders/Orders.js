@@ -10,7 +10,7 @@ import * as actions from '../../store/actions/index';
 
 class Orders extends Component {
   componentDidMount() {
-    this.props.onOrderInit(this.props.token);
+    this.props.onOrderInit(this.props.token, this.props.userId);
   }
 
   render() {
@@ -37,13 +37,14 @@ const mapStateToProps = state => {
     orders: state.or.savedOrders,
     loading: state.or.loading,
     error: state.or.error,
-    token: state.auth.token
+    token: state.auth.token,
+    userId: state.auth.userId
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onOrderInit: (token) => dispatch(actions.orderInit(token))
+    onOrderInit: (token, userId) => dispatch(actions.orderInit(token, userId))
   };
 };
 
